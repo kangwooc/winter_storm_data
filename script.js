@@ -1,3 +1,9 @@
 const times = require('./times')
 const data = require('./winter-storm')
-const jsontocsv = require('json2csv');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+
+const features = data.features;
+
+features.forEach((feature) => {
+
+});
