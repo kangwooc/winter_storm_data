@@ -1,0 +1,23 @@
+{
+  "name": "winter_storm_data",
+  "version": "1.0.0",
+  "description": "## Reference https://data.caller.com/winter-storm-power-outages/",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kangwooc/winter_storm_data.git"
+  },
+  "keywords": [],
+  "author": "Kangwoo Choi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kangwooc/winter_storm_data/issues"
+  },
+  "homepage": "https://github.com/kangwooc/winter_storm_data#readme",
+  "dependencies": {
+    "json2csv": "^5.0.6"
+  }
+}
