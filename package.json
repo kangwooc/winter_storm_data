@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kangwooc/winter_storm_data#readme",
   "dependencies": {
+    "dotenv": "^14.2.0",
     "xlsx": "^0.17.4"
   }
 }
