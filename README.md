@@ -10,14 +10,13 @@ npm install
 npm start
 ```
 
-Additionally, you need to sign up to [positionstack](http://positionstack.com/)
-to use **free** geocoding api up to 25,000 requests to get region code.
+Additionally, you need to sign up to [nominatim](https://nominatim.openstreetmap.org/reverse)
+to use **free** geocoding api.
 To use this api, you need to create `.env` file to root project folder and set environment variables like below;
 
 ```bash
 # .env
-BASE_URL=http://api.positionstack.com/v1/reverse
-API_KEY=YOUR_API_KEY
+BASE_URL=https://nominatim.openstreetmap.org/reverse?accept-language=en&format=jsonv2&zoom=5
 ```
 
 ## Reference

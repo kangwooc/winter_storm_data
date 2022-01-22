@@ -1,13 +1,13 @@
 import fetch from "node-fetch";
 
-export async function getState(cord) {
-  let pointCord, long, lat;
+export async function getAddress(cord) {
+  let pointCord, lon, lat;
 
   pointCord = cord[0][0][0];
-  long = pointCord[0];
+  lon = pointCord[0];
   lat = pointCord[1];
 
-  const url = `${process.env.BASE_URL}?access_key=${process.env.API_KEY}&query=${long},${lat}&limit=3&output=json`;
+  const url = `${process.env.BASE_URL}&lat=${lat}&lon=${lon}`;
   let data;
   try {
     const response = await fetch(url);
@@ -17,5 +17,5 @@ export async function getState(cord) {
     process.exit(1);
   }
 
-  return data.results && data.results > 0 ? data.results[0].region_code : "NA";
+  return data && data.address ? data.address : { state: "NA", county: "NA" };
 }
