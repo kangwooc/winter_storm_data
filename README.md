@@ -10,7 +10,7 @@ npm install
 npm start
 ```
 
-Additionally, you need to sign up to [nominatim](https://nominatim.openstreetmap.org/reverse)
+Additionally, you need to sign up to [nominatim](https://nominatim.org/release-docs/latest/api/Overview/)
 to use **free** geocoding api.
 To use this api, you need to create `.env` file to root project folder and set environment variables like below;
 
