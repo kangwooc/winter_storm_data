@@ -53,7 +53,7 @@ async function createSheet(data) {
   console.log("adding sheet");
   Object.keys(data).forEach(async (key) => {
     console.log(`working process: ${idx++}/${features.length}`);
-    const ws = await XLSX.utils.json_to_sheet(dict[key]);
+    const ws = await XLSX.utils.json_to_sheet(data[key]);
     await XLSX.utils.book_append_sheet(wb, ws, key);
   });
   return wb;
