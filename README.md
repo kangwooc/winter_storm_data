@@ -16,7 +16,7 @@ To use this api, you need to create `.env` file to root project folder and set e
 
 ```bash
 # .env
-BASE_URL=https://nominatim.openstreetmap.org/reverse?accept-language=en&format=jsonv2&zoom=5
+BASE_URL=https://nominatim.openstreetmap.org/reverse?accept-language=en&format=jsonv2&zoom=10
 ```
 
 ## Reference
