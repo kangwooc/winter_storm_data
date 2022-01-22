@@ -10,8 +10,7 @@ npm install
 npm start
 ```
 
-Additionally, you need to sign up to [nominatim](https://nominatim.org/release-docs/latest/api/Overview/)
-to use **free** geocoding api.
+Additionally, we will utilize **free** geocoding api from [nominatim](https://nominatim.org/release-docs/latest/api/Overview/).
 To use this api, you need to create `.env` file to root project folder and set environment variables like below;
 
 ```bash
