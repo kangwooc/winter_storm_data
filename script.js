@@ -22,10 +22,10 @@ async function getData() {
       dict[times[time]] = [];
     }
 
-    let county = address.county || "NA";
+    let county = address.county || "";
 
-    if (county.includes(" ")) {
-      county = county.split(" ")[0];
+    if (county.includes(" ") && county.includes("County")) {
+      county = county.replace(" County", "");
     }
 
     const data = {

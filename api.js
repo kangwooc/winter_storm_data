@@ -17,5 +17,5 @@ export async function getAddress(cord) {
     process.exit(1);
   }
 
-  return data && data.address ? data.address : { state: "NA", county: "NA" };
+  return data && data.address ? data.address : {};
 }
