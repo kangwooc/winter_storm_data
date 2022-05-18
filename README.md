@@ -5,6 +5,7 @@
 In terminal, run the following command:
 
 ```bash
+git clone https://github.com/kangwooc/winter_storm_data.git
 cd winter_storm_data
 npm install
 npm start
