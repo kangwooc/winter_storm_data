@@ -1,5 +1,5 @@
-import { times } from './times';
-import { PowerOutagesJSON } from './winter-storm';
+import { times } from './times_updated';
+import { PowerOutagesJSON } from './winter-storm_updated';
 import * as XLSX from 'xlsx';
 
 const features = PowerOutagesJSON.features;
@@ -27,4 +27,4 @@ Object.keys(dict).forEach(key => {
     XLSX.utils.book_append_sheet(wb, ws, key);
 });
 
-XLSX.writeFile(wb, './data/output.export.xlsx');
+XLSX.writeFile(wb, './data/output.export_2022.xlsx');
