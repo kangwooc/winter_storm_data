@@ -62,7 +62,7 @@ async function createSheet(data) {
 async function main() {
   const data = await getData();
   const wb = await createSheet(data);
-  await XLSX.writeFile(wb, "./data/weather_data.xlsx");
+  await XLSX.writeFile(wb, `./data/${new Date().getTime()}/weather_data.xlsx`);
   console.log("Done!");
 }
 
