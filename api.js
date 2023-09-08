@@ -13,7 +13,7 @@ export async function getAddress(cord) {
     const response = await fetch(url);
     data = await response.json();
   } catch (e) {
-    console.error();
+    console.error(e);
     process.exit(1);
   }
 
