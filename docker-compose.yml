@@ -1,20 +1,40 @@
 version: "3.8"
 
 services:
+    db:
+        container_name: nominatim-db
+        build:
+            context: .
+            dockerfile: db.Dockerfile
+        restart: always
+        environment:
+            POSTGRES_DB: nominatim
+            POSTGRES_USER: my_user
+            POSTGRES_PASSWORD: very_secure_password
+        ports:
+            - "5432:5432"
+        volumes:
+            - './conf/customPostgres.conf:/etc/postgresql.conf'
+            - './pgdata:/var/lib/postgresql/data'
     nominatim:
         container_name: nominatim
         image: mediagis/nominatim:4.2
-        restart: always
+        depends_on:
+            - db
+        #        restart: always
         ports:
             - "8080:8080"
         environment:
             # see https://github.com/mediagis/nominatim-docker/tree/master/4.2#configuration for more options
             PBF_PATH: /nominatim/data/merged.osm.pbf
-            NOMINATIM_PASSWORD: very_secure_password
+            NOMINATIM_TOKENIZER: icu
+            NOMINATIM_DATABASE_DSN: "pgsql:dbname=nominatim;hostaddr=172.17.0.1;user=my_user;password=very_secure_password"
+            PGHOSTADDR: 172.17.0.1
+            PGDATABASE: nominatim
+            PGUSER: my_user
+            PGPASSWORD: very_secure_password
         volumes:
-            - nominatim-data:/var/lib/postgresql/14/main
             - ./osm-maps/data:/nominatim/data
-        shm_size: 8gb
-
+        shm_size: 20gb
 volumes:
     nominatim-data:
