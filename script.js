@@ -1,6 +1,8 @@
+import * as XLSX from "xlsx";
+import { PromisePool } from '@supercharge/promise-pool'
+
 import { times } from "./times";
 import { PowerOutagesJSON } from "./winter-storm";
-import * as XLSX from "xlsx";
 import { getAddress } from "./api";
 import { states } from "./states";
 import "dotenv/config";
@@ -12,17 +14,24 @@ async function getData() {
   let idx = 1;
   console.log("starting sheet");
 
+  const addresses = await PromisePool
+      .for(features)
+      .withConcurrency(50)
+      .process(async (feature) => {
+          const geometry = feature.geometry;
+          const { coordinates } = geometry;
+          return getAddress(coordinates);
+      });
+
   for (const feature of features) {
     const properties = feature.properties;
-    const geometry = feature.geometry;
     const { time } = properties;
-    const { coordinates } = geometry;
-    const address = await getAddress(coordinates);
+    const address = addresses[idx - 1];
     if (!dict[times[time]]) {
       dict[times[time]] = [];
     }
 
-    let county = address.county || "";
+    let county = address?.county || "";
 
     if (county.includes(" ") && county.includes("County")) {
       county = county.replace(" County", "");
@@ -37,7 +46,7 @@ async function getData() {
       state: states[address.state],
       county,
     };
-    dict[times[time]].push(data);
+    dict[data.time].push(data);
     console.log(
       `working process: ${data.name}, ${data.state}, ${data.county} ${idx++}/${
         features.length
