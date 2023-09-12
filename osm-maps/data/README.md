@@ -3,6 +3,7 @@
 1. Download osm data from [geofabrik](https://download.geofabrik.de/) and extract it to `osm-maps/data` folder.
 2. Install [osmium](https://osmcode.org/osmium-tool/manual.html) to your system.
     ```bash
+    ## if you're using macOS
     brew install osmium-tool
     ```
 3. Run the following command to merge osm data.
